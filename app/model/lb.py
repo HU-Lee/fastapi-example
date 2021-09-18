@@ -6,5 +6,6 @@ class LBRequest(BaseModel):
 
 class LBResponse(BaseModel):
     req_ip: str
+    ip_name: str
     target: str
     status: Optional[int] = 0

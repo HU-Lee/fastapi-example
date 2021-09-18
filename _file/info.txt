@@ -1,0 +1,1 @@
+{"https://www.naver.com": {"live": true, "weight": 3}, "https://www.google.com/": {"live": true, "weight": 5}, "https://www.daum.net/": {"live": true, "weight": 2}}
