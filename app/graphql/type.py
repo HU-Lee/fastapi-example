@@ -1,12 +1,13 @@
-from graphene import Interface, String, NonNull, Int
+from graphene import relay
+from graphene_sqlalchemy import SQLAlchemyObjectType
+from covid.database.models import CovidKorea, CovidInter
 
-class Basic(Interface):
-    date = NonNull(String)
+class Korea(SQLAlchemyObjectType):
+    class Meta:
+        model = CovidKorea
+        interfaces = (relay.Node, )
 
-class Korea(Basic):
-    detected = NonNull(Int)
-    death = NonNull(Int)
-
-class Inter(Basic):
-    japan = NonNull(Int)
-    usa = NonNull(Int)
+class Inter(SQLAlchemyObjectType):
+    class Meta:
+        model = CovidInter
+        interfaces = (relay.Node, )

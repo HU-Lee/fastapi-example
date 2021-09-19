@@ -7,7 +7,7 @@ from . import models
 # -----------------------------------------------------
 
 def get_korea(db: Session, date: str):
-    return db.query(models.CovidKorea).filter(models.CovidKorea.date == date).first()
+    return db.query(models.CovidKorea).filter(models.CovidKorea.date==date).first()
     
 def get_korea_limit(db: Session, skip: int = 0, limit: int = 7):
     return db.query(models.CovidKorea).order_by(models.CovidKorea.date.desc()).offset(skip).limit(limit).all()
@@ -41,7 +41,7 @@ def get_inter_limit(db: Session, skip: int = 0, limit: int = 7):
     return db.query(models.CovidInter).order_by(models.CovidInter.date.desc()).offset(skip).limit(limit).all()
 
 def create_or_update_inter(db: Session, date:str, jap:int, usa:int):
-    db_inter = get_korea(db, date)
+    db_inter = get_inter(db, date)
     if not db_inter:
         db_inter = models.CovidInter(date=date, jap=jap, usa=usa)
     else:

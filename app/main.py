@@ -1,6 +1,9 @@
 import datetime
 import sys
 from app.model import TestResponse
+from starlette.graphql import GraphQLApp
+from graphene import Schema
+from app.graphql.query import Query
 from fastapi import FastAPI
 from app.routes import lbtest
 
@@ -9,7 +12,8 @@ name = "FastAPI - Example"
 
 app.include_router(lbtest.router)
 
-
+# add graphQL
+app.add_route("/graphql", GraphQLApp(schema=Schema(query=Query)))
 
 @app.on_event("startup")
 async def startup_event():

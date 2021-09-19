@@ -10,6 +10,7 @@ class CovidController:
         self.update_time = update_time
         self.timer = None
         self.db = get_db()
+        # self.save_pastdata()
 
     def save_pastdata(self) -> None:
         for i in range(7):
